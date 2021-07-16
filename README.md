@@ -46,17 +46,18 @@ array : value []
 
 ```json
 {
-    "phone_number" : "010-1111-1111"
+    "phone_number" : "010-1111-1111",
     "age" : 10,
     "isAgree" : false,
     "user" : {
-    "email" : "steve@gmail.com",
-    "password" : "1234"
+      "email": "steve@gmail.com",
+      "password": "1234"
+    }
 }
-
-
+```
+```json
 {
-    "user_list" :[
+    "user_list" : [
         {
             "account" : "abcd",
             "password" : "1234"
@@ -68,13 +69,7 @@ array : value []
     ]
 }
 
-//user 조회 하는 경우
-{
-    "account" : "abcd",
-    "password" : "1234"
-}
 ```
-
 
 
 ### IoC
@@ -187,3 +182,10 @@ public class main{
 
 @Bean
 - new 로 생성한 객체를 bean으로 등록할때
+...
+
+**Springboot Valildation**
+- null 값에 접근하면 java는 NullPointerException을 발생시킨다
+- 따라서 이걸 검사하는 과정을 Validation 이라고 한다
+- @NotNull, @NotEmpty, @Past, @Max 등등
+- spring-boot-starter-validation
