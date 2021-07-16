@@ -10,6 +10,26 @@ public class User {
     private String phoneNumber;
     private String address;
 
+    @Override
+    public String toString() {
+        return "User{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", address='" + address + '\'' +
+                '}';
+    }
+
+    public User() {
+    }
+
+    public User(String name, int age, String phoneNumber, String address) {
+        this.name = name;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.address = address;
+    }
+
     public String getName() {
         return name;
     }
