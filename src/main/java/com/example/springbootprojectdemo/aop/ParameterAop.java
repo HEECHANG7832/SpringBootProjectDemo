@@ -1,0 +1,42 @@
+package com.example.springbootprojectdemo.aop;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
+import org.aspectj.lang.reflect.MethodSignature;
+import org.springframework.stereotype.Component;
+
+import java.lang.reflect.Method;
+
+@Aspect
+@Component
+public class ParameterAop {
+
+    @Pointcut("execution(* com.example.springbootprojectdemo.controller..*.*(..))") //controller 하위 전부
+    private void cut() {
+
+    }
+
+    @Before("cut()")
+    public void before(JoinPoint joinPoint) {
+        //method 이름 가져오는법
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        Method method = methodSignature.getMethod();
+        System.out.println(method.getName());
+
+        //joinPoint를 통해서 arg을 가져온다
+        Object[] args = joinPoint.getArgs();
+        for (Object obj : args) {
+            System.out.println(obj.getClass().getSimpleName());
+        }
+    }
+
+    @AfterReturning(value = "cut()", returning = "returnObj") //return하는 객체 파악 가능
+    public void afterReturning(JoinPoint joinPoint, Object returnObj) {
+
+        System.out.println(returnObj);
+    }
+
+}

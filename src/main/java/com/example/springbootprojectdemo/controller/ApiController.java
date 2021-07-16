@@ -32,4 +32,18 @@ public class ApiController {
     public ResponseEntity<User> put(@RequestBody User user) {
         return ResponseEntity.status(HttpStatus.CREATED).body(user); //응답에 대한 내용을 추가해 줄 수 있음
     }
+
+    //AOP
+    @GetMapping("/get/{id}")
+    public String get(@PathVariable Long id, @RequestParam String name) {
+        System.out.println(name);
+        return name;
+    }
+
+    @PostMapping("/post")
+    public User post(@RequestBody User user) {
+        System.out.println(user.toString());
+        return user;
+    }
+
 }
