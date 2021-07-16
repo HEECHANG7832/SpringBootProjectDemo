@@ -189,3 +189,8 @@ public class main{
 - 따라서 이걸 검사하는 과정을 Validation 이라고 한다
 - @NotNull, @NotEmpty, @Past, @Max 등등
 - spring-boot-starter-validation
+
+
+**Exception 처리**
+- 에러 페이지
+- 에러 코드

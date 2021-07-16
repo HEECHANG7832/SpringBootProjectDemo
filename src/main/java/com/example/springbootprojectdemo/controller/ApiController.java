@@ -87,4 +87,18 @@ public class ApiController {
 
         return ResponseEntity.ok(user);
     }
+
+    /*
+    Exception
+     */
+    @GetMapping("")
+    public User getE(@RequestParam(required = false) String name, @RequestParam(required = false) Integer age) {
+        User user = new User();
+        return user;
+    }
+
+    @PostMapping("")
+    public User postE(@Valid @RequestBody User user) {
+        return user;
+    }
 }

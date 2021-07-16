@@ -1,19 +1,22 @@
 package com.example.springbootprojectdemo.dto;
 
+import com.example.springbootprojectdemo.annotation.YearMonth;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Pattern;
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 
+    @NotNull
     @NotBlank
     private String name;
 
+    @NotNull
     @Max(value = 90)
     private int age;
 
@@ -24,6 +27,31 @@ public class User {
 
     @Email
     private String email;
+
+    @YearMonth(pattern = "yyyyMM")
+    private String reqYearMonth;
+
+    //@Valid //클래스 밖에서 @Valid를 반드시 붙여줘야 된다
+    //private List<Car> cars;
+
+    @AssertTrue(message = "yyyyMM 형식에 맞지 않습니다")
+    public boolean isReqYearMonthValidation(){ //is~ 를 붙여야함
+        try {
+            LocalDate localDate = LocalDate.parse(getReqYearMonth() + "01", DateTimeFormatter.ofPattern("yyyyMMdd"));
+        } catch (Exception e) {
+            return false;
+        }
+        return true;
+    }
+
+    public String getReqYearMonth() {
+        return reqYearMonth;
+    }
+
+    public void setReqYearMonth(String reqYearMonth) {
+        this.reqYearMonth = reqYearMonth;
+    }
+
 
     public String getEmail() {
         return email;
