@@ -3,6 +3,7 @@ package com.example.springbootprojectdemo.controller;
 import com.example.springbootprojectdemo.annotation.Decode;
 import com.example.springbootprojectdemo.annotation.Timer;
 import com.example.springbootprojectdemo.dto.User;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Slf4j
 @RestController //REST API를 처리하는 Controller
 @RequestMapping("/api") //RequestMapping URI를 지정
 @Validated
@@ -119,5 +121,15 @@ public class ApiController {
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
     public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException e) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+    }
+
+
+    /*
+    filter
+     */
+    @PostMapping("")
+    public User user(@RequestBody User user) {
+        log.info("User : {}", user);
+        return user;
     }
 }

@@ -1,14 +1,21 @@
 package com.example.springbootprojectdemo.dto;
 
 import com.example.springbootprojectdemo.annotation.YearMonth;
+import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+//@Getter
+//@Setter
+//@NoArgsConstructor
+//@AllArgsConstructor
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class User {
 

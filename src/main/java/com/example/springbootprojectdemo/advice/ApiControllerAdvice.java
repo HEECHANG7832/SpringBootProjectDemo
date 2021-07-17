@@ -14,12 +14,8 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolationException;
-import javax.validation.Path;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 
 @RestControllerAdvice(basePackageClasses = ApiController.class)
 public class ApiControllerAdvice {
@@ -67,12 +63,12 @@ public class ApiControllerAdvice {
     public ResponseEntity constraintViolationException(ConstraintViolationException e) {
 
         e.getConstraintViolations().forEach(error -> {
-            Stream<Path.Node> stream = StreamSupport.stream(error.getPropertyPath().spliterator(), false);
-            List<Path.Node> list = stream.collect(Collectors.toList());
+//            Stream<Path.Node> stream = StreamSupport.stream(error.getPropertyPath().spliterator(), false);
+//            List<Path.Node> list = stream.collect(Collectors.toList());
 
-            String field = list.get(list.size() - 1).getName();
-            String message = error.getMessage();
-            String inValidValue = error.getInvalidValue().toString();
+//            String field = list.get(list.size() - 1).getName();
+//            String message = error.getMessage();
+//            String inValidValue = error.getInvalidValue().toString();
         });
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
@@ -81,9 +77,9 @@ public class ApiControllerAdvice {
     @ExceptionHandler(value = MissingServletRequestParameterException.class)
     public ResponseEntity missingServletRequestParameterException(MissingServletRequestParameterException e) {
 
-        String fieldName = e.getParameterName();
-        String fieldType = e.getParameterType();
-        String invalidValue = e.getMessage();
+//        String fieldName = e.getParameterName();
+//        String fieldType = e.getParameterType();
+//        String invalidValue = e.getMessage();
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }

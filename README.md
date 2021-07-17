@@ -194,3 +194,11 @@ public class main{
 **Exception 처리**
 - 에러 페이지
 - 에러 코드
+
+**Filter란**
+- Web Application에서 관리되는 영역
+- Client로부터 오는 요청/응답에 대해 최초/최종 단계의 위치에 존재
+- Spring에 의해서 데이터가 변환되기 전의 순수한 Client의 요청/응답을 알 수 있다
+- ServletRequest, ServletResponse의 객체를 변환 가능
+- Logging, 인증과 관련된 Logic
+

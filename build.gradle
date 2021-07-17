@@ -13,9 +13,15 @@ repositories {
 }
 
 dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.12' //컴파일 할때
+    annotationProcessor 'org.projectlombok:lombok:1.18.12' //annotation 처리
+
     implementation 'org.springframework.boot:spring-boot-starter-aop'
+
     implementation 'org.springframework.boot:spring-boot-starter-web'
+
     implementation 'org.springframework.boot:spring-boot-starter-validation'
+
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

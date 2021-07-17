@@ -7,10 +7,12 @@ import com.example.springbootprojectdemo.ioc.UrlEncoder;
 import org.springframework.beans.factory.annotation.Configurable;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+//@ServletComponentScan
 @SpringBootApplication
 public class SpringBootProjectDemoApplication {
 
@@ -28,7 +30,7 @@ public class SpringBootProjectDemoApplication {
     }
 
 }
-
+/*
 @Configuration //내부에 Component를 가지고 있다
 class AppConfig{
 
@@ -41,4 +43,4 @@ class AppConfig{
         return new Encoder(urlEncoder);
     }
 
-}
+}*/
