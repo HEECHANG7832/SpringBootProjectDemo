@@ -18,7 +18,7 @@ public class User {
 
     @NotNull
     @Max(value = 90)
-    private int age;
+    private Integer age;
 
     @Pattern(regexp = "^\\d{2,3}-\\{3,4}-\\d{4}$", message = "양식이 맞지 않습니다")
     private String phoneNumber;

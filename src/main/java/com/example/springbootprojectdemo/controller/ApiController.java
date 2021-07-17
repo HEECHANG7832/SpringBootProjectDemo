@@ -94,6 +94,9 @@ public class ApiController {
     @GetMapping("")
     public User getE(@RequestParam(required = false) String name, @RequestParam(required = false) Integer age) {
         User user = new User();
+
+        int a = 10 + age; //NullPointerException!!!
+
         return user;
     }
 
