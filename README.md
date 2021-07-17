@@ -202,3 +202,7 @@ public class main{
 - ServletRequest, ServletResponse의 객체를 변환 가능
 - Logging, 인증과 관련된 Logic
 
+**Interceptor**
+- Spring Context에 등록됨
+- 인증 단계, Logging, 선/후처리를 통해 Business logic과 분리
+- 어떤 핸들러에 연결이 됬는지 알 수 있다
