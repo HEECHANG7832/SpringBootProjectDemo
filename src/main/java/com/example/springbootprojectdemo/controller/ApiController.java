@@ -7,12 +7,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @RestController //REST API를 처리하는 Controller
 @RequestMapping("/api") //RequestMapping URI를 지정
+@Validated
 public class ApiController {
 
     @GetMapping("/hello")
@@ -92,7 +97,12 @@ public class ApiController {
     Exception
      */
     @GetMapping("")
-    public User getE(@RequestParam(required = false) String name, @RequestParam(required = false) Integer age) {
+    public User getE(
+            @Size(min = 1)
+            @RequestParam String name,
+
+            @NotNull
+            @RequestParam Integer age) {
         User user = new User();
 
         int a = 10 + age; //NullPointerException!!!
@@ -103,5 +113,11 @@ public class ApiController {
     @PostMapping("")
     public User postE(@Valid @RequestBody User user) {
         return user;
+    }
+
+    //특정 api에서 직접 처리 가능
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public ResponseEntity methodArgumentNotValidException(MethodArgumentNotValidException e) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
     }
 }
