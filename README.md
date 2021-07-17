@@ -206,3 +206,28 @@ public class main{
 - Spring Context에 등록됨
 - 인증 단계, Logging, 선/후처리를 통해 Business logic과 분리
 - 어떤 핸들러에 연결이 됬는지 알 수 있다
+
+**비동기 처리**
+- @EnableAsync @Async를 붙이면 비동기로 동작한다
+- CompletableFuture 는 다른 스레드에서 실행시키고 결과를 반환
+```java
+public class AsyncService{
+    
+    @Async
+    public CompletableFuture run(){
+      return new AsyncResult(hello()).completable();
+    }
+    
+    public String hello() {
+      for (int i = 0; i < 10; i++) {
+        try {
+          Thread.sleep(2000);
+          log.info("thread sleep ...");
+        } catch (InterruptedException e) {
+          e.printStackTrace();
+        }
+      }
+      return "async hello";
+    }
+}
+```
