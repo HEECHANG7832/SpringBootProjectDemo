@@ -21,7 +21,7 @@ public class TimerAop {
     }
 
     @Around("cut() & enableTimer()")
-    public void around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public Object around(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
 
@@ -30,6 +30,8 @@ public class TimerAop {
         stopWatch.stop();
 
         System.out.println(stopWatch.getTotalTimeSeconds());
+
+        return result;
 
     }
 }

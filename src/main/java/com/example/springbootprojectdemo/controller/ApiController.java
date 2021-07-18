@@ -41,10 +41,10 @@ public class ApiController {
     }
 
     //ResponseEntity
-    @PutMapping("/put")
-    public ResponseEntity<User> put(@RequestBody User user) {
-        return ResponseEntity.status(HttpStatus.CREATED).body(user); //응답에 대한 내용을 추가해 줄 수 있음
-    }
+//    @PutMapping("/put")
+//    public ResponseEntity<User> put(@RequestBody User user) {
+//        return ResponseEntity.status(HttpStatus.CREATED).body(user); //응답에 대한 내용을 추가해 줄 수 있음
+//    }
 
     /*
     AOP
@@ -61,11 +61,11 @@ public class ApiController {
 //        return user;
 //    }
 
-    @Timer
-    @DeleteMapping("/delete")
-    public void delete() throws InterruptedException {
-        Thread.sleep(2000);
-    }
+//    @Timer
+//    @DeleteMapping("/delete")
+//    public void delete() throws InterruptedException {
+//        Thread.sleep(2000);
+//    }
 
 //    @Decode
 //    @PutMapping("/put")
