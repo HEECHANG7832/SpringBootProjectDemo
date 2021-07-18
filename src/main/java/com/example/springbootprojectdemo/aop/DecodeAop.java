@@ -31,24 +31,24 @@ public class DecodeAop {
     @Before("cut() & enableDecode()")
     public void before(JoinPoint joinPoint) throws UnsupportedEncodingException {
         //joinPoint를 통해서 arg을 가져온다
-        Object[] args = joinPoint.getArgs();
-        for (Object arg : args) {
-            if (arg instanceof User) {
-                User user = User.class.cast(arg);
-                String base64Email = user.getAddress();
-                String address = new String(Base64.getDecoder().decode(base64Email), "UTF-8");
-                user.setAddress(address);
-            }
-        }
+//        Object[] args = joinPoint.getArgs();
+//        for (Object arg : args) {
+//            if (arg instanceof User) {
+//                User user = User.class.cast(arg);
+//                String base64Email = user.getAddress();
+//                String address = new String(Base64.getDecoder().decode(base64Email), "UTF-8");
+//                user.setAddress(address);
+//            }
+//        }
     }
 
     @AfterReturning(value = "cut() & enableDecode()", returning = "returnObj") //return하는 객체 파악 가능
     public void afterReturning(JoinPoint joinPoint, Object returnObj) {
-        if (returnObj instanceof User) {
-            User user = User.class.cast(returnObj);
-            String address = user.getAddress();
-            String base64Address = Base64.getEncoder().encodeToString(address.getBytes());
-            user.setAddress(base64Address);
-        }
+//        if (returnObj instanceof User) {
+//            User user = User.class.cast(returnObj);
+//            String address = user.getAddress();
+//            String base64Address = Base64.getEncoder().encodeToString(address.getBytes());
+//            user.setAddress(base64Address);
+//        }
     }
 }

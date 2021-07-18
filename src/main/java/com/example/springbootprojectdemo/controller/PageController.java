@@ -14,14 +14,4 @@ public class PageController {
         return "main.html";
     }
 
-    //굳이 page를 내리는 컨트롤러에서 Body를 내리지 말자
-    //ResponseEntity
-    @ResponseBody
-    @GetMapping("/user")
-    public User user(){
-        var user = new User();
-        user.setAddress("1234");
-        user.setName("steve");
-        return user;
-    }
 }

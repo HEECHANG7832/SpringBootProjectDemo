@@ -26,7 +26,7 @@ public class TimerAop {
         stopWatch.start();
 
         Object result = proceedingJoinPoint.proceed();
-
+        System.out.println(result);
         stopWatch.stop();
 
         System.out.println(stopWatch.getTotalTimeSeconds());

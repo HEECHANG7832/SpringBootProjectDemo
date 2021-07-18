@@ -20,13 +20,13 @@ public class SpringBootProjectDemoApplication {
 
         SpringApplication.run(SpringBootProjectDemoApplication.class, args);
 
-        ApplicationContext context = ApplicationContextProvider.getContext();
-        //Base64Encoder base64Encoder = context.getBean(Base64Encoder.class);
-
-        Encoder encoder = context.getBean("base64Encoder", Encoder.class);
-        String url = "www.naver.com/books/it?page=10&size=20&name=spring";
-
-        String result = encoder.encode(url);
+//        ApplicationContext context = ApplicationContextProvider.getContext();
+//        //Base64Encoder base64Encoder = context.getBean(Base64Encoder.class);
+//
+//        Encoder encoder = context.getBean("base64Encoder", Encoder.class);
+//        String url = "www.naver.com/books/it?page=10&size=20&name=spring";
+//
+//        String result = encoder.encode(url);
     }
 
 }

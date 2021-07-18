@@ -55,11 +55,11 @@ public class ApiController {
         return name;
     }
 
-    @PostMapping("/post")
-    public User post(@RequestBody User user) {
-        System.out.println(user.toString());
-        return user;
-    }
+//    @PostMapping("/post")
+//    public User post(@RequestBody User user) {
+//        System.out.println(user.toString());
+//        return user;
+//    }
 
     @Timer
     @DeleteMapping("/delete")
@@ -67,12 +67,12 @@ public class ApiController {
         Thread.sleep(2000);
     }
 
-    @Decode
-    @PutMapping("/put")
-    public User putDecode(@RequestBody User user) {
-        System.out.println(user.toString());
-        return user;
-    }
+//    @Decode
+//    @PutMapping("/put")
+//    public User putDecode(@RequestBody User user) {
+//        System.out.println(user.toString());
+//        return user;
+//    }
 
     /*
     Validation
@@ -112,10 +112,10 @@ public class ApiController {
         return user;
     }
 
-    @PostMapping("")
-    public User postE(@Valid @RequestBody User user) {
-        return user;
-    }
+//    @PostMapping("")
+//    public User postE(@Valid @RequestBody User user) {
+//        return user;
+//    }
 
     //특정 api에서 직접 처리 가능
     @ExceptionHandler(value = MethodArgumentNotValidException.class)
@@ -127,9 +127,9 @@ public class ApiController {
     /*
     filter
      */
-    @PostMapping("")
-    public User user(@RequestBody User user) {
-        log.info("User : {}", user);
-        return user;
-    }
+//    @PostMapping("")
+//    public User user(@RequestBody User user) {
+//        log.info("User : {}", user);
+//        return user;
+//    }
 }
