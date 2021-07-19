@@ -9,16 +9,23 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.RequestEntity;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.net.URI;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.util.Base64;
 
 @Slf4j
 @RestController //REST API를 처리하는 Controller
@@ -149,5 +156,35 @@ public class ApiController {
     @GetMapping("/client")
     public UserResponse gethello(){
         return restTemplateService.hello();
+    }
+
+    //server side
+    //@ReauestHeader("x-authorization") String authorization
+
+    @GetMapping("/naver")
+    public String naver(){
+
+        URI uri = UriComponentsBuilder
+                .fromUriString("https://openapi.naver.com/")
+                .path("v1/search/local.json")
+                .queryParam("query", "갈비집")
+                .queryParam("display", 10)
+                .queryParam("start", 1)
+                .queryParam("sort", "random")
+                .encode(Charset.forName("UTF-8"))
+                .build()
+                .toUri();
+
+        //header setting
+        RequestEntity<Void> req = RequestEntity
+                .get(uri)
+                .header("X-Naver-Client-Id","AOxdiEjk6M26fgXFclFn")
+                .header("X-Naver-Client-Secret","h7Jrq7Cdn8")
+                .build();
+
+        RestTemplate restTemplate = new RestTemplate();
+        ResponseEntity<String> result = restTemplate.exchange(req, String.class);
+
+        return result.getBody();
     }
 }
