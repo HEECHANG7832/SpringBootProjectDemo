@@ -5,6 +5,7 @@ import com.example.springbootprojectdemo.annotation.Timer;
 import com.example.springbootprojectdemo.dto.User;
 import com.example.springbootprojectdemo.dto.UserResponse;
 import com.example.springbootprojectdemo.service.RestTemplateService;
+import io.swagger.annotations.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
@@ -27,6 +28,7 @@ import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.Base64;
 
+@Api(tags = {"Api 정보를 제공하는 Controller"})     //swagger
 @Slf4j
 @RestController //REST API를 처리하는 Controller
 @RequestMapping("/api") //RequestMapping URI를 지정
@@ -43,8 +45,12 @@ public class ApiController {
     }
 
     //Text
+    @ApiResponse(code = 502, message = "사용자의 나이가 10살 이하일때")    //swagger
+    @ApiOperation(value = "사용자의 이름과 나이를 echo하는 메소드")
     @GetMapping("/text")
-    public String text(@RequestParam String account){
+    public String text(
+            @ApiParam(value = "계정", defaultValue = "20")
+            @RequestParam String account){
         return account;
     }
 
@@ -64,6 +70,12 @@ public class ApiController {
     /*
     AOP
      */
+    @ApiImplicitParams(    //swagger
+        {
+            @ApiImplicitParam(value = "x 값"),
+            @ApiImplicitParam(value = "y 값")
+        }
+    )
     @GetMapping("/get/{id}")
     public String get(@PathVariable Long id, @RequestParam String name) {
         System.out.println(name);
@@ -187,4 +199,5 @@ public class ApiController {
 
         return result.getBody();
     }
+
 }

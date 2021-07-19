@@ -242,3 +242,7 @@ public class AsyncService{
 특정 객체 Mocking
 - @ExtendWith(MockitoExtension.class)
 - 특정 객체가 동작할때 값을 바꿔치기 할 수 있다
+
+
+**Swagger**
+- REST API를 편리하게 문서화 해주고 API를 호출해보고 테스트 할 수 있는 프로젝트

@@ -1,6 +1,11 @@
 package com.example.springbootprojectdemo.dto;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
 public class UserRequest {
+
+    @ApiModelProperty(value = "사용자의 이름", example = "steve", required = true)
     private String name;
     private String email;
     private int age;
