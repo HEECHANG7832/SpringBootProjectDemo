@@ -231,3 +231,14 @@ public class AsyncService{
     }
 }
 ```
+
+**JUnit**
+
+- TDD 
+    - 테스트 주도 개발, 단위 별로 검증
+- JAVA 기반의 단위 테스트를 위한 프레임워크
+- Annotation지원, Assert를 통해서 예상, 실제 검증
+
+특정 객체 Mocking
+- @ExtendWith(MockitoExtension.class)
+- 특정 객체가 동작할때 값을 바꿔치기 할 수 있다
