@@ -3,7 +3,11 @@ package com.example.springbootprojectdemo.controller;
 import com.example.springbootprojectdemo.annotation.Decode;
 import com.example.springbootprojectdemo.annotation.Timer;
 import com.example.springbootprojectdemo.dto.User;
+import com.example.springbootprojectdemo.dto.UserResponse;
+import com.example.springbootprojectdemo.service.RestTemplateService;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -21,6 +25,10 @@ import javax.validation.constraints.Size;
 @RequestMapping("/api") //RequestMapping URI를 지정
 @Validated
 public class ApiController {
+
+    public ApiController(RestTemplateService restTemplateService) {
+        this.restTemplateService = restTemplateService;
+    }
 
     @GetMapping("/hello")
     public String hello(){
@@ -132,4 +140,14 @@ public class ApiController {
 //        log.info("User : {}", user);
 //        return user;
 //    }
+
+    /*
+    RestTemplte
+     */
+    private final RestTemplateService restTemplateService;
+
+    @GetMapping("/client")
+    public UserResponse gethello(){
+        return restTemplateService.hello();
+    }
 }
