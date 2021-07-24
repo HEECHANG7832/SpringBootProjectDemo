@@ -1,0 +1,31 @@
+{{>layout/header}}
+
+    <h1>비트코인 추천 리스트</h1>
+    <h1 class = "h1-clock"></h1>
+    <script src = "clock.js"></script>
+    <div class="col-md-12">
+        <br>
+        <!-- 목록 출력 영역 -->
+        <table class="table table-horizontal table-bordered">
+            <thead class="thead-strong">
+            <tr>
+                <th>코인</th>
+                <th>현재가</th>
+                <th>목표가</th>
+                <th>5일 추세</th>
+            </tr>
+            </thead>
+            <tbody id="tbody">
+            {{#tables}}
+                <tr>
+                    <td>{{ticker}}</td>
+                    <td>{{currentPrice}}</td>
+                    <td>{{targetPrice}}</td>
+                    <td>{{ma5}}</td>
+                </tr>
+            {{/tables}}
+            </tbody>
+        </table>
+    </div>
+    <script src="../js/clock.js"></script>
+{{>layout/footer}}
