@@ -246,3 +246,11 @@ public class AsyncService{
 
 **Swagger**
 - REST API를 편리하게 문서화 해주고 API를 호출해보고 테스트 할 수 있는 프로젝트
+- build.gradle 추가
+    - implementation group: 'io.springfox', name: 'springfox-boot-starter', version: '3.0.0'
+- http://localhost:8080/swagger-ui/index.html 
+- http://localhost:8080/v2/api-docs
+
+
+
+
