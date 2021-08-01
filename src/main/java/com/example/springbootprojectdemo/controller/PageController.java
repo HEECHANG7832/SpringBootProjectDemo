@@ -11,25 +11,25 @@ public class PageController {
         return "main.html";
     }
 
-    @RequestMapping("/index")
-    public String index() { //스트링인 경우 페이지를 찾는다
-        return "index";
-    }
-
-    @RequestMapping("/post")
-    public String post() { //스트링인 경우 페이지를 찾는다
-        return "post";
-    }
-
-    @RequestMapping("/tables")
-    public String tables() { //스트링인 경우 페이지를 찾는다
-        return "tables";
-    }
-
-    @RequestMapping("/timer")
-    public String timer() { //스트링인 경우 페이지를 찾는다
-        return "timer";
-    }
+//    @RequestMapping("/index")
+//    public String index() { //스트링인 경우 페이지를 찾는다
+//        return "index";
+//    }
+//
+//    @RequestMapping("/post")
+//    public String post() { //스트링인 경우 페이지를 찾는다
+//        return "post";
+//    }
+//
+//    @RequestMapping("/tables")
+//    public String tables() { //스트링인 경우 페이지를 찾는다
+//        return "tables";
+//    }
+//
+//    @RequestMapping("/timer")
+//    public String timer() { //스트링인 경우 페이지를 찾는다
+//        return "timer";
+//    }
 
 
 }
